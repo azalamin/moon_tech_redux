@@ -44,7 +44,7 @@
     "_id": 2,
     "model": "Intel 10th Gen Core i3-10100 Gaming PC",
     "image": "https://live.staticflickr.com/65535/52521844202_dd853335c9_o.jpg",
-    "status": true,
+    "status": false,
     "brand": "intel",
     "keyFeature": [
       "MSI H510M-A PRO Intel 10th Gen and 11th Gen Mirco-ATX Motherboard",
@@ -82,7 +82,7 @@
     "_id": 3,
     "model": "AMD Ryzen 5 3600 Gaming PC",
     "image": "https://live.staticflickr.com/65535/52522855818_98bdd4c07a_o.jpg",
-    "status": false,
+    "status": true,
     "brand": "amd",
     "keyFeature": [
       "MSI B450 TOMAHAWK MAX AM4 AMD ATX Motherboard (China)",
@@ -120,7 +120,7 @@
     "_id": 4,
     "model": "Gaming PC 10th Gen Core i5-10400f",
     "image": "https://live.staticflickr.com/65535/52522584684_9fa14a3332_o.jpg",
-    "status": false,
+    "status": true,
     "brand": "intel",
     "keyFeature": [
       "MSI B560M-A PRO Intel 11th Gen mATX Motherboard",
@@ -158,7 +158,7 @@
     "_id": 5,
     "model": "Intel 10th Gen Core i7-10700 Gaming PC",
     "image": "https://live.staticflickr.com/65535/52522308736_8453894269_o.jpg",
-    "status": false,
+    "status": true,
     "brand": "intel",
     "rating": 5,
     "keyFeature": [
@@ -275,7 +275,7 @@
     "_id": 8,
     "model": "AMD Ryzen 7 5800X3D Gaming PC",
     "image": "https://live.staticflickr.com/65535/52521844332_5f738162d8_o.jpg",
-    "status": true,
+    "status": false,
     "brand": "amd",
     "keyFeature": [
       "AMD Ryzen 7 5800X3D Processor",
