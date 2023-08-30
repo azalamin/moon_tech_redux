@@ -15,11 +15,11 @@ const Home = () => {
   const products = useSelector(state => state.product.products);
 
   useEffect(() => {
-    // Live products
-    // https://raw.githubusercontent.com/mir-hussain/moon-tech-server/main/products.json
-
     dispatch(loadProductData())
   }, [dispatch]);
+
+  console.log(products)
+
 
   const activeClass = "text-white  bg-indigo-500 border-white";
 
