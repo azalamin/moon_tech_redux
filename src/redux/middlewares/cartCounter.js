@@ -12,7 +12,7 @@ const cartCounter = (store) => (next) => (action) => {
         return next(newAction)
     }
 
-    return next();
+    return next(action);
 }
 
 export default (cartCounter)

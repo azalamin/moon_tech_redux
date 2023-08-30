@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from "../../components/ProductCard";
 import { toggleBrand, toggleStock } from '../../redux/actions/filterAction';
+import loadProductData from '../../redux/thunk/products/fetchProducts';
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
 
   // Easy to understand
@@ -12,15 +12,14 @@ const Home = () => {
   // const {brands, stock} = filters
 
   const { brands, stock } = useSelector(state => state.filter.filters);
+  const products = useSelector(state => state.product.products);
 
   useEffect(() => {
     // Live products
     // https://raw.githubusercontent.com/mir-hussain/moon-tech-server/main/products.json
 
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+    dispatch(loadProductData())
+  }, [dispatch]);
 
   const activeClass = "text-white  bg-indigo-500 border-white";
 
