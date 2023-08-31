@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from "../../components/ProductCard";
-import { toggleBrand, toggleStock } from '../../redux/actions/filterAction';
+import { clearFilter, toggleBrand, toggleStock } from '../../redux/actions/filterAction';
 import loadProductData from '../../redux/thunk/products/fetchProducts';
 
 const Home = () => {
@@ -13,6 +13,8 @@ const Home = () => {
 
   const { brands, stock } = useSelector(state => state.filter.filters);
   const products = useSelector(state => state.product.products);
+
+  console.log(products)
 
   useEffect(() => {
     dispatch(loadProductData())
@@ -59,6 +61,11 @@ const Home = () => {
           Intel
         </button>
       </div>
+      {
+        (brands.length || stock) && <div className='grid place-items-end mt-[-1rem] mb-[2rem]'>
+          <button className='px-2 py-1 rounded-full font-light hover:text-red-500' onClick={() => dispatch(clearFilter())}>Clear Filter</button>
+        </div>
+      }
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14'>
         {content}
       </div>

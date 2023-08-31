@@ -9,3 +9,4 @@ export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 // For filters
 export const TOGGLE_BRAND = "TOGGLE_BRAND";
 export const TOGGLE_STOCK = "TOGGLE_STOCK";
+export const CLEAR_FILTER = 'CLEAR_FILTER'
