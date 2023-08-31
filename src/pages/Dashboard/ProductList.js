@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { BiEdit } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import deleteProduct from '../../redux/thunk/products/deleteProduct';
 import loadProductData from '../../redux/thunk/products/fetchProducts';
+import updateProductInf from '../../redux/thunk/products/updateProduct';
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -68,7 +71,12 @@ const ProductList = () => {
                     </div>
                   </td>
                   <td className='p-2'>
-                    <div className='flex justify-center'>
+                    <div className='flex justify-center items-center'>
+                      <button className='hover:text-blue-500 mr-3' onClick={() => dispatch(updateProductInf(_id))}>
+                        <Link to='/dashboard/edit-product'>
+                          <BiEdit size={21} />
+                        </Link>
+                      </button>
                       <button onClick={() => { dispatch(deleteProduct(_id)) }}>
                         <svg
                           className='w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1'
