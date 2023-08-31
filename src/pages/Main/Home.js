@@ -18,9 +18,6 @@ const Home = () => {
     dispatch(loadProductData())
   }, [dispatch]);
 
-  console.log(products)
-
-
   const activeClass = "text-white  bg-indigo-500 border-white";
 
   let content;
