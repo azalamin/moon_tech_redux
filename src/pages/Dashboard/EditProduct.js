@@ -1,11 +1,32 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from 'react-redux';
-import addProductData from '../../redux/thunk/products/addProductData';
+import { useDispatch, useSelector } from 'react-redux';
 
 const EditProduct = () => {
-    const { register, handleSubmit } = useForm();
     const dispatch = useDispatch();
+
+    const product = useSelector(state => state.product.productForUpdate);
+    const { model, brand, status, price, keyFeature, spec, image } = product;
+
+    const preLoadedValues = {
+        model: model,
+        brand: brand,
+        status: status.toString(),
+        price: price,
+        keyFeature1: keyFeature[0],
+        keyFeature2: keyFeature[1],
+        keyFeature3: keyFeature[2],
+        keyFeature4: keyFeature[3],
+        image: image,
+        spec: spec,
+    }
+
+    console.log(status)
+
+    const { register, handleSubmit } = useForm({
+        defaultValues: preLoadedValues,
+
+    });
 
     const submit = (data) => {
         const product = {
@@ -23,8 +44,9 @@ const EditProduct = () => {
         };
 
         console.log(product);
-        dispatch(addProductData(product))
+        // dispatch(updateProductInf(product))
     };
+
 
     return (
         <div className='flex justify-center items-center h-full '>
@@ -56,7 +78,7 @@ const EditProduct = () => {
                 </div>
                 <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='price'>
-                        Image
+                        Price
                     </label>
                     <input type='text' name='price' id='price' {...register("price")} />
                 </div>
@@ -68,9 +90,9 @@ const EditProduct = () => {
                             <input
                                 type='radio'
                                 id='available'
-                                value={true}
-                                {...register("status")}
-                            />
+                                value={'true'}
+                                name='status'
+                                {...register("status")} />
                             <label className='ml-2 text-lg' htmlFor='available'>
                                 Available
                             </label>
@@ -80,9 +102,8 @@ const EditProduct = () => {
                                 type='radio'
                                 id='stockOut'
                                 name='status'
-                                value={false}
-                                {...register("status")}
-                            />
+                                value={'false'}
+                                {...register("status")} />
                             <label className='ml-2 text-lg' htmlFor='stockOut'>
                                 Stock out
                             </label>
@@ -112,6 +133,7 @@ const EditProduct = () => {
                         {...register("keyFeature2")}
                     />
                 </div>
+
                 <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='keyFeature3'>
                         Key Feature 3

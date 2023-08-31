@@ -5,11 +5,13 @@ import {
   PRODUCT_LOADED,
   REMOVE_FROM_CART,
   REMOVE_PRODUCT,
+  UPDATE_PRODUCT,
 } from "../actionTypes/actionTypes";
 
 const initialState = {
   cart: [],
   products: [],
+  productForUpdate: {},
 };
 
 const productReducer = (state = initialState, action) => {
@@ -21,6 +23,11 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload,
+      }
+    case UPDATE_PRODUCT:
+      return {
+        ...state,
+        productForUpdate: action.payload
       }
     case ADD_PRODUCT:
       return {

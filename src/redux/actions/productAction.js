@@ -46,7 +46,7 @@ export const removeFromCart = (product) => {
 export const updateProduct = (product) => {
   return {
     type: UPDATE_PRODUCT,
-    payload: product
+    payload: product,
   }
 }
 

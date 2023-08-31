@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { BiEdit } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { updateProduct } from '../../redux/actions/productAction';
 import deleteProduct from '../../redux/thunk/products/deleteProduct';
 import loadProductData from '../../redux/thunk/products/fetchProducts';
-import updateProductInf from '../../redux/thunk/products/updateProduct';
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -45,20 +45,20 @@ const ProductList = () => {
             </thead>
 
             <tbody className='text-sm divide-y divide-gray-100'>
-              {products.map(({ model, brand, price, status, _id }) => (
-                <tr key={_id}>
+              {products.map((product) => (
+                <tr key={product._id}>
                   <td className='p-2'>
                     <input type='checkbox' className='w-5 h-5' value='id-1' />
                   </td>
                   <td className='p-2'>
-                    <div className='font-medium text-gray-800'>{model}</div>
+                    <div className='font-medium text-gray-800'>{product.model}</div>
                   </td>
                   <td className='p-2'>
-                    <div className='text-left capitalize'>{brand}</div>
+                    <div className='text-left capitalize'>{product.brand}</div>
                   </td>
                   <td className='p-2'>
                     <div className='text-left'>
-                      {status ? (
+                      {product.status ? (
                         <p className='text-green-500 font-medium'>Available</p>
                       ) : (
                         <p className='text-red-500 font-medium'>Stock out</p>
@@ -67,17 +67,17 @@ const ProductList = () => {
                   </td>
                   <td className='p-2'>
                     <div className='text-left font-medium text-indigo-500'>
-                      {price}
+                      {product.price}
                     </div>
                   </td>
                   <td className='p-2'>
                     <div className='flex justify-center items-center'>
-                      <button className='hover:text-blue-500 mr-3' onClick={() => dispatch(updateProductInf(_id))}>
+                      <button className='hover:text-blue-500 mr-3' onClick={() => dispatch(updateProduct(product))}>
                         <Link to='/dashboard/edit-product'>
                           <BiEdit size={21} />
                         </Link>
                       </button>
-                      <button onClick={() => { dispatch(deleteProduct(_id)) }}>
+                      <button onClick={() => { dispatch(deleteProduct(product._id)) }}>
                         <svg
                           className='w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1'
                           fill='none'
